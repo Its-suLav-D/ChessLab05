@@ -11,7 +11,7 @@
 #include "position.h"
 #include "board.h"
 #include "game.h"
-
+#include "pawn.h"
 using namespace std;
 
 
@@ -27,8 +27,10 @@ using namespace std;
 void callBack( Interface *pUI, void *p)
 {
     Game * game = (Game*)p;
-    ogstream gout;
     
+    ogstream gout;
+    game->displayPiece();
+        
     
 }
 

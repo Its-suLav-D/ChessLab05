@@ -1,12 +1,14 @@
 #include"position.h"
 #include "uiDraw.h"
-
+#include <set>
 #pragma once
 
 
 using namespace std;
 
 
+class Move;
+class Board;
 
 class Piece
 {
@@ -15,10 +17,11 @@ protected:
     bool fWhite;
     int nMoves;
     int lastMove;
+    
 public:
     // Constructors
     Piece(){};
-    Piece(int r, int c, bool white = true);
+    Piece(int r, int c, bool white=true);
     
     Piece(const Piece &piece)   {*this = piece;}
     
@@ -40,8 +43,8 @@ public:
     
     // Virtual Methods
     virtual char getLetter()     = 0;
-    virtual void display(ogstream * gout)   = 0;
-//    virtual void getMoves(set<Move> & moves, const Board & board)   const = 0;
+    virtual void display(ogstream  & gout)   = 0;
+//    virtual void getMoves(set<Move> & moves, const Board & board)    = 0;
     
     // Operators
     bool operator == (char letter)  {   return getLetter() == letter;   }

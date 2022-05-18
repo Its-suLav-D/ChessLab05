@@ -7,7 +7,7 @@ char Rook:: getLetter()
     return isWhite() ? 'r' : 'R';
 }
 
-void Rook:: display(ogstream* gout)
+void Rook:: display(ogstream & gout)
 {
-    gout->drawRook(position.getLocation(), fWhite);
+    gout.drawRook(position.getLocation(), !fWhite);
 }

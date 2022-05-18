@@ -9,7 +9,7 @@ private:
     int location;
 public:
     // constructors
-    Position(): location(0), squareWidth(0), squareHeight(0){};
+    Position(): location(-1){};
     
     Position(int loc): location(loc){};
     Position(int r, int c): location(0) {   set(r,c);   }

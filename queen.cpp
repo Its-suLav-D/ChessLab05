@@ -7,7 +7,7 @@ char Queen:: getLetter()
     return isWhite() ? 'q' : 'Q';
 }
 
-void Queen:: display(ogstream * gout)
+void Queen:: display(ogstream & gout)
 {
-    gout->drawQueen(position.getLocation(), fWhite);
+    gout.drawQueen(position.getLocation(), !fWhite);
 }

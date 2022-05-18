@@ -9,8 +9,13 @@ char Pawn::getLetter()
       return 'P'; //upppercase
 }
 
-void Pawn::display(ogstream *gout)
+void Pawn::display(ogstream &gout)
 {
-   // not evven going to deal with that yet.
-    gout->drawPawn(position.getLocation(), fWhite);
+ 
+    gout.drawPawn(position.getLocation(), !fWhite);
 }
+
+//void Pawn:: getMoves(set<Move> & moves , Board & Board)
+//{
+//
+//}

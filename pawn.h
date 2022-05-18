@@ -15,7 +15,7 @@ public:
     Pawn(int r, int c, bool b): Piece{r,c,b} { };
 
     char getLetter();
-    void display(ogstream *gout);
-//    set <Move> getMoves(const char* board);
+    void display(ogstream &gout);
+//    void getMoves(set<Move> &moves, Board &board);
 };
 

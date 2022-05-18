@@ -33,7 +33,8 @@ void Position:: setRow(int row)
 {
     if( row >=0 && row <8 && isValid())
     {
-        location = row;
+        
+        location = row*8+ getCol();
     } else
     {
         location = -1;
@@ -42,19 +43,24 @@ void Position:: setRow(int row)
 
 void Position:: setCol(int col)
 {
-    if(col >=0 && col <8 && isValid())
-    {
-        location = getLocation() + col;
-    } else
-    {
-        location = -1;
-    }
+   
+        location = getRow() * 8 + col;
+  
 }
 
 void Position:: set(int row, int col)
 {
-    location=0;
+    location =0;
     setRow(row);
     setCol(col);
+}
+
+
+bool Position:: operator != (const Position &rhs) const
+{
+    if(!isInvalid())
+        return rhs.isValid();
+    else
+        return rhs.location != location;
 }
 

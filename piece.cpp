@@ -8,9 +8,8 @@
 #include "piece.h"
 
 
-Piece:: Piece(int row, int col, bool isWhite)
+Piece:: Piece(int row, int col, bool isWhite) : position(row, col)
 {
-    Position p(row, col);
     fWhite = isWhite;
     nMoves =0;
     lastMove = -1;

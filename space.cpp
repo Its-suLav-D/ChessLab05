@@ -13,7 +13,7 @@ char Space::getLetter()
     return '_';
 }
 
-void Space::display(ogstream * gout)
+void Space::display(ogstream & gout)
 {
    // not evven going to deal with that yet.
    

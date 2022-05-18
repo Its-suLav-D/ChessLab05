@@ -12,8 +12,12 @@
 class Game
 {
 private:
-    Board *b;
+    Board *boardInstance;
 public:
 //    Board* getBoardGout(ogstream gout) {return board;}
     Game();
+    
+    Board * getBoard() {return boardInstance; }
+    
+    void displayPiece();
 };

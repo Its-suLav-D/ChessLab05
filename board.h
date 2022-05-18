@@ -16,6 +16,7 @@ private:
     void assertBoard();
     int currentMove; // Which Move I am currently On
     void swap(Position &pos1, Position &pos2);
+
 public:
     Board();
     Board(ogstream gout);
@@ -26,14 +27,14 @@ public:
     void free();
     void reset();
     void move(Move & Move);
-
+    void display();
     
     // Assignment Operator
     
     // Subscript Operator
-    const Piece &operator [] (int index)
+    Piece *operator [] (int index)
     {
-        return *(board[index]);
+        return board[index];
     }
         
 };

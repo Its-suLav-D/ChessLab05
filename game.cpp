@@ -9,6 +9,12 @@
 #include "game.h"
 
 Game:: Game()
+
 {
-    b = new Board();
+    boardInstance = new Board();
+}
+void Game:: displayPiece()
+{
+    
+    this->boardInstance->display();
 }
