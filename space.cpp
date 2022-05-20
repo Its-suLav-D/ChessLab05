@@ -18,3 +18,9 @@ void Space::display(ogstream & gout)
    // not evven going to deal with that yet.
    
 }
+
+
+void Space:: getMoves(set<int> & moves , Board & Board)
+{
+
+}

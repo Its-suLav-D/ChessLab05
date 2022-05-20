@@ -16,6 +16,6 @@ public:
 
     char getLetter();
     void display(ogstream &gout);
-//    void getMoves(set<Move> &moves, Board &board);
+    void getMoves(set<int> &moves, Board &board);
 };
 

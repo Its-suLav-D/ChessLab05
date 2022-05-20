@@ -12,6 +12,7 @@
 #include "board.h"
 #include "game.h"
 #include "pawn.h"
+#include "move.h"
 using namespace std;
 
 
@@ -26,11 +27,38 @@ using namespace std;
 
 void callBack( Interface *pUI, void *p)
 {
-    Game * game = (Game*)p;
+    // Cast the Void Pointer to the game object
+    Board * board = (Board*)p;
     
-    ogstream gout;
-    game->displayPiece();
+//    board->getPiece(pUI->getSelectPosition())->getMoves(<#set<Move> &moves#>, <#Board &board#>)
+    
+    // move.setSource(ui.gerPreviousPosition()) returns int
+    // move.setDes(ui.getSelectPosition()); return int
+    set<int> moves;
+    
+
+    if(pUI->getPreviousPosition() >=0 && pUI-> getPreviousPosition() < 64)
+    {
+//        cout << board->getPiece(pUI->getSelectPosition())->getLetter() << endl;
+//
+//        cout << pUI->getSelectPosition()<< "I am here " << endl;
+        board->getPiece(pUI->getPreviousPosition())->getMoves(moves, *board);
         
+        int des = pUI -> getSelectPosition();
+        
+        if(moves.find(des)!= moves.end())
+        {
+            cout << "I was here!!" << endl;
+            board->move(pUI->getPreviousPosition(),des);
+            pUI-> clearSelectPosition();
+        }
+        
+    }
+    
+    // Draw the Board
+    pUI->getPreviousPosition();
+    board->display(pUI->getHoverPosition(), pUI->getSelectPosition());
+    
     
 }
 
@@ -68,11 +96,11 @@ int main(int argc, char** argv)
     
 //   // Initialize the demo
 //   GameState demo(ptUpperRight);
-    Game game;
+    Board board;
    // set everything into action
 //   ui.run(callBack, &demo);
     
-    ui.run(callBack,&game);
+    ui.run(callBack,&board);
 
 
    return 0;

@@ -1,6 +1,20 @@
-#pragma once
+
 #include <iostream>
 #include <string>
+
+#pragma once
+struct Delta
+{
+    int dRow;
+    int dCol;
+};
+
+// Delta ADD_R = {1,0};
+// Delta ADD_C = {0,1};
+// Delta SUB_R = {-1,0};
+// Delta SUB_C = {0,-1};
+
+
 class Position
 {
 private:
@@ -17,6 +31,11 @@ public:
     Position(const char * c): location(0) { *this = c;}
     // Copy Constructor
     Position(const Position & rhs):location(rhs.location),squareWidth(rhs.squareWidth), squareHeight(rhs.squareHeight){};
+    
+     Position( Position & rhs, Delta & delta):location(-1)
+    {
+        set(rhs.getRow()+ delta.dRow, rhs.getCol()+delta.dCol);
+    }
     
     
     // getters
@@ -47,7 +66,7 @@ public:
     void setSquareHeight(double height) {if(height > 0.0) squareHeight = height;}
 
     
-    // Assignment Operator Overloaded
+    // Assignment Operator Overloaded Copy
     const Position &operator = (const Position &rhs)
     {
         location = rhs.location;

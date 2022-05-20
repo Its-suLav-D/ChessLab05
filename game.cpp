@@ -6,6 +6,7 @@
 //
 
 #include <stdio.h>
+#include "uiInteract.h"
 #include "game.h"
 
 Game:: Game()
@@ -16,5 +17,5 @@ Game:: Game()
 void Game:: displayPiece()
 {
     
-    this->boardInstance->display();
+    this->boardInstance->displayPieces();
 }

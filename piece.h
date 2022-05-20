@@ -25,26 +25,29 @@ public:
     
     Piece(const Piece &piece)   {*this = piece;}
     
+    
+    virtual ~ Piece(){};
 
     
-    bool isWhite() const    {return fWhite;}
+    bool isWhite() const    {return this->position.isValid() ? fWhite : false ;}
     int getLastMove() const {return lastMove; }
     int getNMoves()const    {return nMoves;}
     bool isMoved() const    {return getNMoves() !=0; }
     
-    const Position & getPosition() const {return position;}
+    Position & getPosition()  {return position;}
     
     bool justMoved(int currentMove) const
     {
         return (currentMove-1 == lastMove);
     }
     
+    void setNMoves(int nMove) {nMoves+= nMove;}
     void setLastMove(int currentMove) {lastMove = currentMove;}
     
     // Virtual Methods
     virtual char getLetter()     = 0;
     virtual void display(ogstream  & gout)   = 0;
-//    virtual void getMoves(set<Move> & moves, const Board & board)    = 0;
+    virtual void getMoves(set<int> & moves,  Board & board)  = 0;
     
     // Operators
     bool operator == (char letter)  {   return getLetter() == letter;   }

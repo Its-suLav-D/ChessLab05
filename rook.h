@@ -16,5 +16,5 @@ public:
     Rook(int r, int c, bool b): Piece(r,c,b){};
     char getLetter();
     void display(ogstream &gout);
-//    set<int> getMoves(const char * board);
+    void getMoves(set<int> &moves, Board &board);
 };
