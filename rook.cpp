@@ -1,3 +1,15 @@
+
+
+/***********************************************************************
+ * Source File:
+ *    Rook : Represents a Rook that inherits from piece
+ * Author:
+ *    Sulav Dahal and Jeremy Busch
+ * Summary:
+ *    All traits of Rook
+ ************************************************************************/
+
+
 #include "rook.h"
 #include "uiDraw.h"
 

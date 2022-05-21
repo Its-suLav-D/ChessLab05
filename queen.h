@@ -1,3 +1,14 @@
+/***********************************************************************
+ * Header File:
+ *    Queen : The representation of a Queen
+ * Author:
+ *    Sulav Dahal and Jeremy Busch
+ * Summary:
+ *    Everything we need to know about a Queen on the screen
+ ************************************************************************/
+
+
+
 #include "piece.h"
 #include "board.h"
 #include <set>

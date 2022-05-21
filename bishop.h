@@ -1,3 +1,13 @@
+/***********************************************************************
+ * Header File:
+ *    Bishop : The representation of a Bishop
+ * Author:
+ *    Sulav Dahal and Jeremy Busch
+ * Summary:
+ *    Everything we need to know about a Bishop on the screen
+ ************************************************************************/
+
+
 #include "piece.h"
 #include "board.h"
 #include <set>

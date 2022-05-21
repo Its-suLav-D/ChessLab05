@@ -1,9 +1,12 @@
-//
-//  move.h
-//  Lab05
-//
-//  Created by Sulav Dahal on 5/17/22.
-//
+/***********************************************************************
+ * Header File:
+ *    Move : The representation of a move
+ * Author:
+ *    Sulav Dahal and Jeremy Busch
+ * Summary:
+ *    Everything we need to know about a Move Class
+ ************************************************************************/
+
 
 #include <string>
 #include "position.h"

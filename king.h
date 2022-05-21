@@ -1,3 +1,13 @@
+/***********************************************************************
+ * Header File:
+ *    King : The representation of a King
+ * Author:
+ *    Sulav Dahal and Jeremy Busch
+ * Summary:
+ *    Everything we need to know about a king on the screen
+ ************************************************************************/
+
+
 #include "piece.h"
 #include "board.h"
 #include <set>

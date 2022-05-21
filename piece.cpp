@@ -1,9 +1,13 @@
-//
-//  piece.cpp
-//  Lab05
-//
-//  Created by Sulav Dahal on 5/17/22.
-//
+/***********************************************************************
+ * Source File:
+ *    Piece : Represents an abstract type piece in the chess game
+ * Author:
+ *    Sulav Dahal and Jeremy Busch
+ * Summary:
+ *    Abstract type, where other classes inherit from
+ ************************************************************************/
+
+
 
 #include "piece.h"
 

@@ -1,3 +1,13 @@
+/***********************************************************************
+ * Source File:
+ *    Pawn : Represents a Pawn that inherits from piece
+ * Author:
+ *    Sulav Dahal and Jeremy Busch
+ * Summary:
+ *    All traits of Pawn 
+ ************************************************************************/
+
+
 #include "pawn.h"
 
 using namespace std;
@@ -60,19 +70,19 @@ void Pawn:: getMoves(set<int> & moves , Board & board)
         // ENPASSANT DIAGONAL LEFT-- OMG THIS WORKS TOOOOO
         c = col-1;
         r = row;
+        int rr = r+1;
         if(board.getPiece(r,c)->justMoved(board.getCurrentMove()) &&
                board.getPiece(r,c)->getNMoves() == 1 &&
                board.getPiece(r,c)->isWhite() == true &&
-               board.getPiece((r++)*c)->getLetter() == '_'
+               board.getPiece(rr,c)->getLetter() == '_'
                )
             {
-                moves.insert(r*8+c);
+                moves.insert(rr*8+c);
             }
         // ENPASSANT DIAGONAL RIGHT-- OMG THIS WORKS TOOOOO
         
         c = col +1;
         r = row;
-        
         if(board.getPiece(r,c)->justMoved(board.getCurrentMove()) &&
                board.getPiece(r,c)->getNMoves() == 1 &&
                board.getPiece(r,c)->isWhite() == true &&
@@ -83,15 +93,6 @@ void Pawn:: getMoves(set<int> & moves , Board & board)
                 moves.insert(r*8+c);
             }
         
-        // PAWN PROMOTION
-//        c = col;
-//        r = row;
-//        if(board.getPiece(r,c)->getPosition().getRow() == 7
-//           )
-//        {
-//            board.promoteQ(r,c);
-//        }
-//
         
     }
     else
@@ -152,9 +153,6 @@ void Pawn:: getMoves(set<int> & moves , Board & board)
             moves.insert(r*8+c);
         }
         
-        // PAWN PROMOTION
-        
-    
         
     }
     

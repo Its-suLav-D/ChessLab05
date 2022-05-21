@@ -1,10 +1,12 @@
-//
-//  board.cpp
-//  Lab05
-//
-//  Created by Sulav Dahal on 5/17/22.
-//
-
+/***********************************************************************
+ * Source File:
+ *    Board : Represents the board in the chess game
+ * Author:
+ *    Sulav Dahal and Jeremy Busch
+ * Summary:
+ *    Where the board is draw, pieces are drawn and where all the moves
+ *    takes place
+ ************************************************************************/
 #include "board.h"
 #include "pawn.h"
 #include "space.h"
@@ -16,7 +18,6 @@
 
 
 // OMG OMG OMG THIS WORKS
-
 void Board::swap(int posFrom, int posTo)
 {
     // SWAP THE POINTERS
@@ -25,23 +26,116 @@ void Board::swap(int posFrom, int posTo)
     Piece *p1 = board[posFrom];
     Piece *p2 = board[posTo];
     
-    board[p2->getPosition().getLocation()]  =  p1;
     
-    board[p1->getPosition().getLocation()] = tempP;
-    
+    // CHECK FOR ENPASSANT
+    if((board[posFrom-1]->isWhite() &&
+       board[posFrom-1]->getNMoves() == 1 && board[posTo]->getLetter() == '_') ||
+       ( board[posFrom+1]->isWhite() &&
+        board[posFrom+1]->getNMoves() ==1 && board[posTo]->getLetter() == '_'
+        )
+    )
+    {
+        int movingToCol = posTo % 8;
+        
+        int r= posTo-1;
+        int c = posTo;
+  
+        Space * newSpace = new Space(r, c, true);
+        // Attack Right
+        if(movingToCol > posFrom % 8)
+        {
+          
+            board[p2->getPosition().getLocation()] = p1;
+            board[p1->getPosition().getLocation()] = tempP;
+            
+            Piece * tempPiece = board[posFrom+1];
+            
+            board[posFrom+1] = newSpace;
+            
+            delete tempPiece;
+        }
+        else
+        {
+            // Attack Left
+            board[p2->getPosition().getLocation()] = p1;
+            board[p1->getPosition().getLocation()] = tempP;
+            
+            Piece * tempPiece = board[posFrom-1];
+            
+            board[posFrom-1] = newSpace;
+            
+            delete tempPiece;
+            
+        }
+    }
+    else if (
+             (board[posFrom-1]->isWhite() == false &&
+                board[posFrom-1]->getNMoves() == 1 && board[posTo]->getLetter() == '_') ||
+                ( board[posFrom+1]->isWhite()  == false &&
+                 board[posFrom+1]->getNMoves() ==1 && board[posTo]->getLetter() == '_'
+                 )
+             )
+    {
+         // Attack RIGHT
+        
+        int movingToCol = posTo % 8;
+        
+        int r= posTo-1;
+        int c = posTo;
+  
+        Space * newSpace = new Space(r, c, true);
+        
+        if(movingToCol > posFrom % 8)
+        {
+          
+            board[p2->getPosition().getLocation()] = p1;
+            board[p1->getPosition().getLocation()] = tempP;
+            
+            Piece * tempPiece = board[posFrom+1];
+            
+            board[posFrom+1] = newSpace;
+            
+            delete tempPiece;
+        }
+        else
+        {
+            // Attack LEFT
+            board[p2->getPosition().getLocation()] = p1;
+            board[p1->getPosition().getLocation()] = tempP;
+            
+            Piece * tempPiece = board[posFrom-1];
+            
+            board[posFrom-1] = newSpace;
+            
+            delete tempPiece;
+        }
+        
+    }
+
+    else
+    {
+        
+        board[p2->getPosition().getLocation()]  =  p1;
+        
+        board[p1->getPosition().getLocation()] = tempP;
+        
+    }
+
+
     
     // UPDATE THE POSITION
     Position  temp = p1->getPosition();
     p1->getPosition() = p2-> getPosition();
     p2->getPosition() = temp;
     
-    if(posTo / 8 == 7)
+    // Handle Pawn Promotion
+    if(posTo / 8 == 7 && board[posTo]->getLetter() =='P')
     {
         int r= posTo / 8;
         int c = posTo % 8;
         this->promoteQ(r, c, false);
     }
-    if(posTo / 8 ==0)
+    if(posTo / 8 ==0 && board[posTo]->getLetter() == 'p')
     {
         int r = posTo / 8;
         int c= posTo % 8;
@@ -57,6 +151,7 @@ void Board::swapCapture(int posFrom, int posTo)
     
     Space * newSpace = new Space(posFrom / 8, posFrom % 8, true);
     
+    int row = posTo / 8;
     
     // SWAP THE POINTERS
     Piece * tempP = board[posTo];
@@ -64,11 +159,16 @@ void Board::swapCapture(int posFrom, int posTo)
     Piece *p1 = board[posFrom];
     Piece *p2 = board[posTo];
     
+    
+
+
+   
     board[p2->getPosition().getLocation()]  =  p1;
-    
+        
     board[p1->getPosition().getLocation()] = tempP;
-    
-    
+        
+  
+     
     // UPDATE THE POSITION
     Position  temp = p1->getPosition();
     p1->getPosition() = p2-> getPosition();
@@ -79,13 +179,13 @@ void Board::swapCapture(int posFrom, int posTo)
     delete tempP;
     
     
-    if(posTo / 8 == 7)
+    if(row == 7 && board[posTo]->getLetter() == 'P')
     {
         int r= posTo / 8;
         int c = posTo % 8;
         this->promoteQ(r, c, false);
     }
-    if(posTo / 8 ==0)
+    if(row ==0 && board[posTo]->getLetter()== 'p')
     {
         int r = posTo / 8;
         int c= posTo % 8;
@@ -144,7 +244,7 @@ void Board:: reset()
         board[6] = knightRight;
 
         Bishop * bishopLeft = new Bishop(0, 2, false);
-//        Bishop * bishopRight = new Bishop(0, 5, false);
+        Bishop * bishopRight = new Bishop(0, 5, false);
     
         // DELETE ME I AM TESTING BISHOP
     
@@ -152,7 +252,7 @@ void Board:: reset()
 //    board[18] = testBishop;
 
         board[2] = bishopLeft;
-//        board[5] = bishopRight;
+        board[5] = bishopRight;
 
         Queen * queen = new Queen(0, 3, false);
         board[3] = queen;
@@ -198,8 +298,8 @@ void Board:: reset()
 
     // TEST PAWN FOR ATTACKING LEFT
     
-    Pawn * testWhitePawn = new Pawn(2,1,true);
-    board[17] = testWhitePawn;
+//    Pawn * testWhitePawn = new Pawn(2,1,true);
+//    board[17] = testWhitePawn;
 
 }
 
@@ -288,11 +388,49 @@ void Board:: move(int posFrom, int posTo)
     // SWAP NON CAPTURING MOVE
     if(checkPiece->getLetter() == '_')
     {
+         
         this->swap(posFrom,posTo);
     }
+   
     else
     {
-        this->swapCapture(posFrom, posTo);
+        Piece * checkP = board[posFrom];
+        
+        // CHECK FOR CASTLING MOVE
+        if( (checkP->getLetter()=='k' || checkP-> getLetter() =='K') &&
+           (checkPiece->getLetter() == 'R' || checkPiece->getLetter() == 'r')  &&
+           (board[posFrom+1]->getLetter() == '_' &&board[posFrom+2]->getLetter() == '_' )
+
+        )
+        {
+            if(checkP->getLetter()== 'K')
+            {
+                if( checkPiece->getLetter() == 'R' &&
+                board[posFrom+1]->getLetter() == '_' &&
+                checkPiece->getNMoves() == 0 &&
+                checkP->getNMoves() == 0)
+                {
+                    this ->castleK(posFrom, posTo);
+                }
+            }
+            else
+            {
+                if(checkPiece->getLetter() == 'r' &&  board[posFrom+1]->getLetter() == '_' &&
+                   checkPiece->getNMoves() == 0 &&
+                   checkP->getNMoves() == 0)
+                {
+                    this-> castleK(posFrom, posTo);
+                }
+            }
+        }
+        
+        else
+        {
+            this->swapCapture(posFrom, posTo);
+        }
+
+        
+       
     }
 
     
@@ -312,7 +450,47 @@ void Board:: promoteQ(int r, int c, bool white)
     
 }
 
+void Board:: castleK(int posFrom, int posTo)
+{
+    
+    int rookNewLoc = posFrom+1;
+    int kingNewLoc = posTo-1;
+    
+    Piece *tempSpace = board[rookNewLoc];
+    
+    Piece *tempSpaceKing = board[kingNewLoc];
+    
+    // From is King
+    Piece *p1 = board[posFrom];
+    
+    // To is Rook
+    Piece *p2 = board[posTo];
+    
+    
+    // SWAP ROOK WITH SPACE
+    board[rookNewLoc] = p2;
+    Space * newSpace = new Space(posTo/8, posTo%8, true);
+    board[posTo] = newSpace;
+    
+    board[rookNewLoc]->getPosition() = tempSpace->getPosition();
+
+    
+
+    // SWAP KING WITH ROOK
+    
+    board[kingNewLoc] = p1;
+    Space *newSpaceKing = new Space(posFrom/8, posFrom%8, true);
+    board[posFrom] = newSpaceKing;
+    
+    board[kingNewLoc]->getPosition() = tempSpaceKing->getPosition();
+    
+
+}
+
+
 void Board::capture()
 {
     
 }
+
+

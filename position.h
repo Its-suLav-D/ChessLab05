@@ -1,3 +1,14 @@
+/***********************************************************************
+ * Header File:
+ *    Board : The representation of a Piece
+ * Author:
+ *    Sulav Dahal and Jeremy Busch
+ * Summary:
+ *    Everything we need to know about the Position of a piece on
+ *    the screen
+ ************************************************************************/
+
+
 
 #include <iostream>
 #include <string>
@@ -8,11 +19,6 @@ struct Delta
     int dRow;
     int dCol;
 };
-
-// Delta ADD_R = {1,0};
-// Delta ADD_C = {0,1};
-// Delta SUB_R = {-1,0};
-// Delta SUB_C = {0,-1};
 
 
 class Position

@@ -1,3 +1,14 @@
+/***********************************************************************
+ * Source File:
+ *    Bishop : Represents a Bishop that inherits from piece
+ * Author:
+ *    Sulav Dahal and Jeremy Busch
+ * Summary:
+ *    All traits of Bishop
+ ************************************************************************/
+
+
+
 #include "bishop.h"
 
 

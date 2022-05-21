@@ -1,3 +1,14 @@
+/***********************************************************************
+ * Source File:
+ *    Knight : Represents a Knight that inherits from piece
+ * Author:
+ *    Sulav Dahal and Jeremy Busch
+ * Summary:
+ *    All traits of Knight
+ ************************************************************************/
+
+
+
 #include "knight.h"
 
 char Knight:: getLetter()

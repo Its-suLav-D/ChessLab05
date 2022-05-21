@@ -1,3 +1,13 @@
+/***********************************************************************
+ * Header File:
+ *    Space : The representation of a Space
+ * Author:
+ *    Sulav Dahal and Jeremy Busch
+ * Summary:
+ *    Everything we need to know about a Space on the screen
+ ************************************************************************/
+
+
 
 #include "board.h"
 #include <fstream>        // for IFSTREAM

@@ -1,3 +1,15 @@
+/***********************************************************************
+ * Source File:
+ *    Queen : Represents a Queen that inherits from piece
+ * Author:
+ *    Sulav Dahal and Jeremy Busch
+ * Summary:
+ *    All traits of Queen
+ ************************************************************************/
+
+
+
+
 #include "queen.h"
 
 

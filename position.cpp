@@ -1,3 +1,16 @@
+/***********************************************************************
+ * Source File:
+ *    Position : Represents a Position of a Piece on the game
+ * Author:
+ *    Sulav Dahal and Jeremy Busch
+ * Summary:
+ *    Find the location, row, col, etc of a particular piece on the game
+ ************************************************************************/
+
+
+
+
+
 #include "position.h"
 #include <iostream>
 

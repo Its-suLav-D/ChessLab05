@@ -1,9 +1,13 @@
-//
-//  space.cpp
-//  Lab05
-//
-//  Created by Sulav Dahal on 5/17/22.
-//
+
+/***********************************************************************
+ * Source File:
+ *    Space : Represents a Space that inherits from piece
+ * Author:
+ *    Sulav Dahal and Jeremy Busch
+ * Summary:
+ *    All traits of Empty Space
+ ************************************************************************/
+
 
 #include "space.h"
 #include "uiDraw.h"

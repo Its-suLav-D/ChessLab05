@@ -1,3 +1,14 @@
+/***********************************************************************
+ * Header File:
+ *    Piece : The representation of a Piece
+ * Author:
+ *    Sulav Dahal and Jeremy Busch
+ * Summary:
+ *    Everything we need to know about a piece on the screen
+ ************************************************************************/
+
+
+
 #include"position.h"
 #include "uiDraw.h"
 #include <set>

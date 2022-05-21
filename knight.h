@@ -1,3 +1,12 @@
+/***********************************************************************
+ * Header File:
+ *    Knight : The representation of a Knight
+ * Author:
+ *    Sulav Dahal and Jeremy Busch
+ * Summary:
+ *    Everything we need to know about a Knight on the screen
+ ************************************************************************/
+
 
 #include "piece.h"
 #include "board.h"

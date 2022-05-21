@@ -1,7 +1,22 @@
+/***********************************************************************
+ * Header File:
+ *    Board : The representation of a Board
+ * Author:
+ *    Sulav Dahal and Jeremy Busch
+ * Summary:
+ *    Everything we need to know about a board on the screen
+ ************************************************************************/
+
+
+
+
 #include "piece.h"
 #include "move.h"
 #include "position.h"
 #include "uiInteract.h"
+
+
+
 
 using namespace std;
 
@@ -47,6 +62,8 @@ public:
     void promoteQ(int r, int c, bool white);
     
     void capture();
+    
+    void castleK(int from, int To);
     
    
     // Assignment Operator
